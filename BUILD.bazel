@@ -71,6 +71,16 @@ ts_library(
         ":hotkeys_lib",
         ":shellversion_lib",
         ":snaptoneighbors_lib",
+        ":tilespec_lib",
+        ":gnometypes_lib",
+    ],
+)
+
+ts_library(
+    name = "gnometypes_lib",
+    srcs = ["gnometypes.ts"],
+    tsconfig = "//:tsconfig-app.json",
+    deps = [
     ],
 )
 
@@ -107,7 +117,15 @@ ts_library(
     tsconfig = "//:tsconfig-app.json",
     deps = [
         ":logging_lib",
+        ":gnometypes_lib",
     ],
+)
+
+
+ts_library(
+    name = "tilespec_lib",
+    srcs = ["tilespec.ts"],
+    tsconfig = "//:tsconfig.json",
 )
 
 ts_library(
@@ -122,9 +140,11 @@ ts_library(
     testonly = 1,
     srcs = [
         "shellversion.spec.ts",
+        "tilespec.spec.ts",
     ],
     deps = [
         ":shellversion_lib",
+        ":tilespec_lib",
         "@npm//@types/chai",
         "@npm//@types/jasmine",
         "@npm//chai",
